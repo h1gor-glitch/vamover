@@ -1,180 +1,200 @@
 <!DOCTYPE html>
-<!-- Define que o documento é HTML5 -->
-
-<html lang="pt-BR">
-<!-- Idioma da página -->
-
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<!-- Permite acentos -->
-
-<title>Login</title>
-<!-- Nome da aba -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tela de Login</title>
 
 <style>
-/* Remove margens padrão e define fonte */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
-/* Corpo da página */
-body {
-    height: 100vh; /* altura total da tela */
-    display: flex; /* ativa flexbox */
+body{
+    background:#e5e5e5;
 }
 
-/* LADO ESQUERDO */
-.left {
-    width: 50%; /* metade da tela */
-    background: #0b0b0b; /* fundo preto */
-    color: white; /* texto branco */
-    display: flex;
-    flex-direction: column; /* elementos em coluna */
-    justify-content: center; /* centraliza verticalmente */
-    padding: 80px; /* espaço interno */
+.container{
+    width:90%;
+    max-width:1100px;
+    height:640px;
+    background:#fff;
+    margin:30px auto;
+    border-radius:8px;
+    overflow:hidden;
 }
 
-/* Título */
-h1 {
-    font-size: 40px;
-    margin-bottom: 40px;
+.topo{
+    width:100%;
+    height:45px;
+    background:#b80000;
 }
 
-/* Ponto roxo */
-h1 span {
-    color: #c084fc;
+.conteudo{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    height:calc(100% - 45px);
+    padding:30px;
 }
 
-/* Caixa dos inputs */
-.input-box {
-    margin-bottom: 20px;
+.esquerda{
+    width:45%;
 }
 
-/* Texto do input */
-.input-box label {
-    font-size: 14px;
-    color: #aaa;
-    display: block;
-    margin-bottom: 5px;
+.esquerda h1{
+    color:#b80000;
+    font-size:58px;
+    margin-bottom:10px;
 }
 
-/* Campo de entrada */
-.input-box input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #444;
-    background: transparent;
-    color: white;
-    outline: none;
+.esquerda p{
+    color:#8b0000;
+    font-size:22px;
+    margin-bottom:40px;
 }
 
-/* Quando seleciona o input */
-.input-box input:focus {
-    border-color: #c084fc;
+.esquerda img{
+    width:320px;
+    display:block;
+    margin:auto;
 }
 
-/* "Esqueci a senha" */
-.forgot {
-    font-size: 13px;
-    margin-bottom: 20px;
+.login-box{
+    width:360px;
+    background:#b80000;
+    padding:40px 30px;
+    border-radius:20px;
+    color:#fff;
 }
 
-/* Link */
-.forgot a {
-    color: #aaa;
-    text-decoration: none;
+.login-box h2{
+    text-align:center;
+    font-size:48px;
+    margin-bottom:35px;
 }
 
-/* Hover */
-.forgot a:hover {
-    text-decoration: underline;
+.login-box label{
+    display:block;
+    margin-bottom:8px;
+    font-size:22px;
 }
 
-/* Botão */
-button {
-    width: 100%; /* largura total */
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    background: linear-gradient(90deg, #7c3aed, #f59e0b); /* gradiente */
+.campo{
+    position:relative;
+    margin-bottom:20px;
 }
 
-/* Área criar conta */
-.signup {
-    margin-top: 30px;
-    font-size: 14px;
+.campo input{
+    width:100%;
+    padding:16px 60px 16px 16px;
+    border:none;
+    border-radius:6px;
+    font-size:18px;
 }
 
-/* Link criar conta */
-.signup a {
-    color: #aaa;
-    text-decoration: none;
+.toggle{
+    position:absolute;
+    right:10px;
+    top:50%;
+    transform:translateY(-50%);
+    background:none;
+    border:none;
+    color:#8b0000;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:14px;
 }
 
-/* Hover */
-.signup a:hover {
-    text-decoration: underline;
+.login-btn{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:35px;
+    background:#fff;
+    color:#8b0000;
+    font-size:24px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:10px;
 }
 
-/* LADO DIREITO */
-.right {
-    width: 50%; /* metade da tela */
-    background: url('fundo.jpg esta no css') no-repeat center;
-    /* imagem de fundo (como você escreveu) */
-    background-size: cover; /* cobre toda área */
+.links{
+    text-align:center;
+    margin-top:20px;
+}
+
+.links a{
+    display:block;
+    color:#fff;
+    text-decoration:none;
+    margin-top:10px;
+}
+
+.links a:hover{
+    text-decoration:underline;
 }
 </style>
 </head>
 
 <body>
+    <link rel="stylesheet" href="style.css">
 
-<!-- CSS externo (opcional, já existe CSS interno acima) -->
-<link rel="stylesheet" href="style.css">
+<div class="container">
+    <div class="topo"></div>
 
-<!-- LADO ESQUERDO -->
-<div class="left">
+    <div class="conteudo">
 
-    <!-- Título -->
-    <h1>Faça seu login <span>.</span></h1>
+        <div class="esquerda">
+            <h1>Faça login</h1>
+            <p>para acessar a plataforma</p>
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png">
+        </div>
 
-    <!-- Campo de email -->
-    <div class="input-box">
-        <label>Email</label>
-        <input type="email">
-    </div>
+        <div class="login-box">
+            <h2>LOGIN</h2>
 
-    <!-- Campo de senha -->
-    <div class="input-box">
-        <label>Senha</label>
-        <input type="password">
-    </div>
+            <label>Email</label>
+            <div class="campo">
+                <input type="password" id="email" placeholder="email">
+                <button class="toggle" onclick="mostrar('email', this)">VER</button>
+            </div>
 
-    <!-- Link recuperar senha -->
-    <div class="forgot">
-        <a href="#">Esqueci minha senha</a>
-    </div>
+            <label>Senha</label>
+            <div class="campo">
+                <input type="password" id="senha" placeholder="senha">
+                <button class="toggle" onclick="mostrar('senha', this)">VER</button>
+            </div>
 
-    <!-- Botão -->
-    <button>Entrar</button>
+            <button class="login-btn">LOGIN</button>
 
-    <!-- Criar conta -->
-    <div class="signup">
-        <a href="#" id="criarConta">Ainda não tenho uma conta</a>
+            <div class="links">
+                <a href="#" id="criarConta">Criar Conta</a>
+                <a href="#" id="esqueceuSenha">Esqueceu a Senha?</a>
+            </div>
+        </div>
+
     </div>
 </div>
 
-<!-- LADO DIREITO (imagem) -->
-<div class="right"></div>
+<script>
+function mostrar(id, botao){
+    let campo = document.getElementById(id);
 
-<!-- JavaScript -->
+    // bota de mostrar ou ocultar a senha (type="password" ou type="text")
+    if(campo.type === "password"){  
+        campo.type = "text";
+        botao.innerHTML = "OCULTAR";
+    }else{
+        campo.type = "password";
+        botao.innerHTML = "VER";
+    }
+}
+</script>
+
 <script src="script.js"></script>
-
 </body>
 </html>

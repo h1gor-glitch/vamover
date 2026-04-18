@@ -1,18 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Cadastro</title>
+<meta charset="UTF-8">
+<title>Cadastro</title>
 </head>
 <body>
 
-    <h2>Ainda não tenho uma conta</h2>
+<h2>Ainda não tenho uma conta</h2>
 
-    <input type="text" placeholder="Nome"><br><br>
-    <input type="email" placeholder="Email"><br><br>
-    <input type="password" placeholder="Senha"><br><br>
+<input type="text" placeholder="Nome"><br><br>
 
-    <button>Cadastrar</button>
+<input type="password" id="email" placeholder="Email">
+<button onclick="mostrarEmail()">VER</button><br><br>
+
+<input type="password" id="senha" placeholder="Senha">
+<button onclick="mostrarSenha()">VER</button><br><br>
+
+<button>Cadastrar</button>
+
+<script>
+function mostrarSenha(){
+    let senha = document.getElementById("senha");
+    let botao = event.target;
+
+    if(senha.type === "password"){
+        senha.type = "text";
+        botao.innerHTML = "OCULTAR";
+    }else{
+        senha.type = "password";
+        botao.innerHTML = "VER";
+    }
+}
+
+function mostrarEmail(){
+    let email = document.getElementById("email");
+    let botao = event.target;
+
+    if(email.type === "password"){
+        email.type = "text";
+        botao.innerHTML = "OCULTAR";
+    }else{
+        email.type = "password";
+        botao.innerHTML = "VER";
+    }
+}
+</script>
 
 </body>
 </html>
