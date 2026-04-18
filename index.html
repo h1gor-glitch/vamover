@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!-- Define que o documento é HTML5 -->
+
+<html lang="pt-BR">
+<!-- Idioma da página -->
+
+<head>
+<meta charset="UTF-8">
+<!-- Permite acentos -->
+
+<title>Login</title>
+<!-- Nome da aba -->
+
+<style>
+/* Remove margens padrão e define fonte */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Corpo da página */
+body {
+    height: 100vh; /* altura total da tela */
+    display: flex; /* ativa flexbox */
+}
+
+/* LADO ESQUERDO */
+.left {
+    width: 50%; /* metade da tela */
+    background: #0b0b0b; /* fundo preto */
+    color: white; /* texto branco */
+    display: flex;
+    flex-direction: column; /* elementos em coluna */
+    justify-content: center; /* centraliza verticalmente */
+    padding: 80px; /* espaço interno */
+}
+
+/* Título */
+h1 {
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+
+/* Ponto roxo */
+h1 span {
+    color: #c084fc;
+}
+
+/* Caixa dos inputs */
+.input-box {
+    margin-bottom: 20px;
+}
+
+/* Texto do input */
+.input-box label {
+    font-size: 14px;
+    color: #aaa;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Campo de entrada */
+.input-box input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: transparent;
+    color: white;
+    outline: none;
+}
+
+/* Quando seleciona o input */
+.input-box input:focus {
+    border-color: #c084fc;
+}
+
+/* "Esqueci a senha" */
+.forgot {
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+/* Link */
+.forgot a {
+    color: #aaa;
+    text-decoration: none;
+}
+
+/* Hover */
+.forgot a:hover {
+    text-decoration: underline;
+}
+
+/* Botão */
+button {
+    width: 100%; /* largura total */
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #7c3aed, #f59e0b); /* gradiente */
+}
+
+/* Área criar conta */
+.signup {
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+/* Link criar conta */
+.signup a {
+    color: #aaa;
+    text-decoration: none;
+}
+
+/* Hover */
+.signup a:hover {
+    text-decoration: underline;
+}
+
+/* LADO DIREITO */
+.right {
+    width: 50%; /* metade da tela */
+    background: url('fundo.jpg esta no css') no-repeat center;
+    /* imagem de fundo (como você escreveu) */
+    background-size: cover; /* cobre toda área */
+}
+</style>
+</head>
+
+<body>
+
+<!-- CSS externo (opcional, já existe CSS interno acima) -->
+<link rel="stylesheet" href="style.css">
+
+<!-- LADO ESQUERDO -->
+<div class="left">
+
+    <!-- Título -->
+    <h1>Faça seu login <span>.</span></h1>
+
+    <!-- Campo de email -->
+    <div class="input-box">
+        <label>Email</label>
+        <input type="email">
+    </div>
+
+    <!-- Campo de senha -->
+    <div class="input-box">
+        <label>Senha</label>
+        <input type="password">
+    </div>
+
+    <!-- Link recuperar senha -->
+    <div class="forgot">
+        <a href="#">Esqueci minha senha</a>
+    </div>
+
+    <!-- Botão -->
+    <button>Entrar</button>
+
+    <!-- Criar conta -->
+    <div class="signup">
+        <a href="#" id="criarConta">Ainda não tenho uma conta</a>
+    </div>
+</div>
+
+<!-- LADO DIREITO (imagem) -->
+<div class="right"></div>
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+
+</body>
+</html>
