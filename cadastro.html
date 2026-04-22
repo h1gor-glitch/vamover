@@ -2,49 +2,144 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Cadastro</title>
+<title>Criar Conta</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #000000, #093c76);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Caixa principal */
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    width: 350px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+    animation: aparecer 0.8s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Inputs */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    font-size: 14px;
+    color: #555;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #066b23;
+    box-shadow: 0 0 5px rgba(15, 92, 36, 0.5);
+}
+
+/* Botão */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #069921;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #00c6ff;
+}
+
+/* Link */
+.login-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+</style>
+
 </head>
+
 <body>
+    <link rel="stylesheet" href="cadastro.css">
 
-<h2>Ainda não tenho uma conta</h2>
+<div class="container">
+    <h2>Criar Conta</h2>
 
-<input type="text" placeholder="Nome"><br><br>
+    <form>
+        <div class="input-group">
+            <label>Nome</label>
+            <input type="text" placeholder="Digite seu nome" required>
+        </div>
 
-<input type="password" id="email" placeholder="Email">
-<button onclick="mostrarEmail()">VER</button><br><br>
+        <div class="input-group">
+            <label>Email</label>
+            <input type="email" placeholder="Digite seu email" required>
+        </div>
 
-<input type="password" id="senha" placeholder="Senha">
-<button onclick="mostrarSenha()">VER</button><br><br>
+        <div class="input-group">
+            <label>Senha</label>
+            <input type="password" placeholder="Digite sua senha" required>
+        </div>
 
-<button>Cadastrar</button>
+        <div class="input-group">
+            <label>Confirmar Senha</label>
+            <input type="password" placeholder="Confirme sua senha" required>
+        </div>
 
-<script>
-function mostrarSenha(){
-    let senha = document.getElementById("senha");
-    let botao = event.target;
+        <button type="submit">Cadastrar</button>
+    </form>
 
-    if(senha.type === "password"){
-        senha.type = "text";
-        botao.innerHTML = "OCULTAR";
-    }else{
-        senha.type = "password";
-        botao.innerHTML = "VER";
-    }
-}
-
-function mostrarEmail(){
-    let email = document.getElementById("email");
-    let botao = event.target;
-
-    if(email.type === "password"){
-        email.type = "text";
-        botao.innerHTML = "OCULTAR";
-    }else{
-        email.type = "password";
-        botao.innerHTML = "VER";
-    }
-}
-</script>
+    
+</div>
 
 </body>
 </html>
