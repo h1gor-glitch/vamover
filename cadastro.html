@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Criar Conta</title>
 
 <style>
@@ -18,22 +19,26 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
 
-/* Caixa principal */
+/* Caixa principal - COMPACTA */
 .container {
-    background: white;
-    padding: 40px;
-    border-radius: 15px;
-    width: 350px;
-    box-shadow: 0 10px 35px rgba(0,0,0,0.2);
-    animation: aparecer 0.8s ease;
+    background: #ffffff; /* BRANCO PURO */
+    padding: 40px 35px; /* MENOR padding */
+    border-radius: 20px;
+    width: 100%;
+    max-width: 420px; /* MENOR largura */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    animation: slideUp 1s ease-out;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.2);
 }
 
-@keyframes aparecer {
+@keyframes slideUp {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(50px);
     }
     to {
         opacity: 1;
@@ -43,81 +48,147 @@ body {
 
 h2 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* MENOR espaço */
     color: #333;
+    font-size: 28px; /* MENOR título */
+    font-weight: bold;
 }
 
-/* Inputs */
+/* Inputs - MENORES */
 .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* MENOR espaço */
 }
 
 .input-group label {
-    font-size: 14px;
+    font-size: 15px; /* MENOR label */
     color: #555;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px; /* MENOR espaço */
 }
 
 .input-group input {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    padding: 15px 20px; /* MENOR padding */
+    border-radius: 12px;
+    border: 2px solid #e0e0e0;
     outline: none;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    font-size: 16px; /* MENOR fonte */
+    height: 50px; /* MENOR altura */
 }
 
 .input-group input:focus {
-    border-color: #066b23;
-    box-shadow: 0 0 5px rgba(15, 92, 36, 0.5);
+    border-color: #144ebc;
+    box-shadow: 0 0 15px rgba(20, 78, 188, 0.2);
+    transform: translateY(-2px);
+    background: linear-gradient(145deg, #fafafa, white);
 }
 
-/* Botão */
+/* Botão - MENOR */
 button {
     width: 100%;
-    padding: 12px;
+    padding: 16px; /* MENOR padding */
     border: none;
-    border-radius: 8px;
-    background: #144ebc;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #144ebc, #00c8ff);
     color: white;
-    font-size: 16px;
+    font-size: 17px; /* MENOR fonte */
+    font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    height: 55px; /* MENOR altura */
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    box-shadow: 0 8px 25px rgba(20, 78, 188, 0.4);
+    position: relative;
+    overflow: hidden;
+    margin-top: 8px; /* MENOR margem */
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    transition: all 0.5s ease;
+    transform: translate(-50%, -50%);
+}
+
+button:hover::before {
+    width: 250px;
+    height: 250px;
 }
 
 button:hover {
-    background: #0095ff;
+    background: linear-gradient(135deg, #00c8ff, #144ebc);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(0, 200, 255, 0.5);
 }
 
-/* Link */
-.login-link {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 14px;
+button:active {
+    transform: translateY(-1px);
 }
 
-.login-link a {
-    color: #000000;
-    text-decoration: none;
+/* RESPONSIVO */
+@media (max-width: 500px) {
+    .container {
+        padding: 35px 30px;
+        margin: 20px;
+        max-width: none;
+    }
+    
+    h2 { 
+        font-size: 26px;
+        margin-bottom: 25px;
+    }
+    
+    .input-group input {
+        padding: 14px 18px;
+        height: 48px;
+        font-size: 16px;
+    }
+    
+    button {
+        padding: 15px;
+        height: 52px;
+        font-size: 16px;
+    }
 }
 
-.login-link a:hover {
-    text-decoration: underline;
+@media (max-width: 400px) {
+    body {
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 30px;
+    }
+    
+    .container { 
+        padding: 30px 25px; 
+        border-radius: 15px;
+    }
+    
+    h2 { 
+        font-size: 24px; 
+        margin-bottom: 20px; 
+    }
 }
 </style>
 
 </head>
 
 <body>
-    <link rel="stylesheet" href="cadastro.css">
-
 <div class="container">
     <h2>Criar Conta</h2>
 
     <form>
         <div class="input-group">
-            <label>Nome</label>
-            <input type="text" placeholder="Digite seu nome" required>
+            <label>Nome Completo</label>
+            <input type="text" placeholder="Digite seu nome completo" required>
         </div>
 
         <div class="input-group">
@@ -127,7 +198,7 @@ button:hover {
 
         <div class="input-group">
             <label>Senha</label>
-            <input type="password" placeholder="Digite sua senha" required>
+            <input type="password" placeholder="Crie uma senha forte" required>
         </div>
 
         <div class="input-group">
@@ -135,10 +206,8 @@ button:hover {
             <input type="password" placeholder="Confirme sua senha" required>
         </div>
 
-        <button type="submit">Cadastrar</button>
+        <button type="submit">CADASTRAR</button>
     </form>
-
-    
 </div>
 
 </body>
