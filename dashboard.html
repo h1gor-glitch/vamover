@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organizador Escolar</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+
+
+
+  <script src="dashboard.js"></script>
+  
+  
+  <link rel="stylesheet" href="dashboard.css">
+
+
+</script>
+  <div class="container">
+    <div class="topo">
+      <button onclick="abrirSecao('painel')">
+        <i class="fas fa-home"></i> Painel
+      </button>
+      <button onclick="abrirSecao('tarefas')">
+        <i class="fas fa-tasks"></i> Tarefas
+      </button>
+      <button onclick="abrirSecao('notas')">
+        <i class="fas fa-chart-bar"></i> Notas
+      </button>
+      <button onclick="abrirSecao('calendario')">
+        <i class="fas fa-calendar"></i> Calendário
+      </button>
+      <button onclick="abrirSecao('simulados')">
+        <i class="fas fa-clipboard-list"></i> Simulados
+      </button>
+    </div>
+
+    <div id="painel" class="secao ativa">
+      <div class="boas-vindas">
+        <h1><i class="fas fa-graduation-cap"></i> Organizador Escolar</h1>
+        <p>Organize seus estudos de forma simples e eficiente</p>
+      </div>
+      <div class="card">
+        <h2><i class="fas fa-book"></i> Língua Portuguesa</h2>
+        <span>›</span>
+      </div>
+      <div class="card">
+        <h2><i class="fas fa-calculator"></i> Matemática</h2>
+        <span>›</span>
+      </div>
+      <div class="card">
+        <h2><i class="fas fa-landmark"></i> História</h2>
+        <span>›</span>
+      </div>
+      <div class="card">
+        <h2><i class="fas fa-globe"></i> Geografia</h2>
+        <span>›</span>
+      </div>
+      <div class="card">
+        <h2><i class="fas fa-language"></i> Inglês</h2>
+        <span>›</span>
+      </div>
+      <div class="card">
+        <h2><i class="fas fa-leaf"></i> Biologia</h2>
+        <span>›</span>
+      </div>
+      <div class="card">
+        <h2><i class="fas fa-flask"></i> Química</h2>
+        <span>›</span>
+      </div>
+      <div class="card">
+        <h2><i class="fas fa-atom"></i> Física</h2>
+        <span>›</span>
+      </div>
+    </div>
+
+    <div id="tarefas" class="secao">
+      <h2><i class="fas fa-tasks"></i> Atividades e Lembretes</h2><br>
+      <input id="novaTarefa" type="text" placeholder="Digite a atividade">
+      <input id="novoLembrete" type="text" placeholder="Digite um lembrete">
+      <button onclick="adicionarTarefa()">Adicionar Tarefa</button>
+      <ul id="listaTarefas"></ul>
+    </div>
+
+    <div id="notas" class="secao">
+      <h2><i class="fas fa-chart-bar"></i> Notas do Aluno</h2><br>
+      <input id="nomeMateria" type="text" placeholder="Digite a matéria">
+      <input id="valorNota1" type="number" min="0" max="100" placeholder="Primeira nota (0-100)">
+      <input id="valorNota2" type="number" min="0" max="100" placeholder="Segunda nota (0-100)">
+      <button onclick="adicionarNota()">Adicionar Nota</button>
+      <br><br>
+      <p id="mensagemResultado"></p>
+      <canvas id="graficoNotas"></canvas>
+    </div>
+
+    <div id="calendario" class="secao">
+      <h2><i class="fas fa-calendar-alt"></i> Calendário Escolar</h2><br>
+      <div class="calendar-container">
+        <div class="calendar-main">
+          <div class="calendar-header">
+            <h2 id="tituloMes">Janeiro 2026</h2>
+            <select id="mesSelecionado" onchange="atualizarCalendario()">
+              <option value="0">Janeiro</option>
+              <option value="1">Fevereiro</option>
+              <option value="2">Março</option>
+              <option value="3">Abril</option>
+              <option value="4">Maio</option>
+              <option value="5">Junho</option>
+              <option value="6">Julho</option>
+              <option value="7">Agosto</option>
+              <option value="8">Setembro</option>
+              <option value="9">Outubro</option>
+              <option value="10">Novembro</option>
+              <option value="11">Dezembro</option>
+            </select>
+          </div>
+          <table>
+            <tbody id="corpoCalendario">
+              <!-- Calendário será gerado pelo JavaScript -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="calendar-sidebar">
+          <h3><i class="fas fa-bell"></i> Lembretes</h3>
+          <textarea id="novoEvento" placeholder="Escreva aqui sua prova, trabalho ou lembrete"></textarea>
+          <button onclick="adicionarEventoCalendario()">Adicionar Evento</button>
+          <ul id="listaEventosCalendario"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="simulados" class="secao">
+      <h2><i class="fas fa-clipboard-list"></i> Simulados</h2>
+      <ul>
+        <li><i class="fas fa-trophy"></i> Simulado ENEM</li>
+        <li><i class="fas fa-calculator"></i> Simulado de Matemática</li>
+        <li><i class="fas fa-book"></i> Simulado Bimestral</li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>

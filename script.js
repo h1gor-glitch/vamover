@@ -43,18 +43,16 @@ class SistemaEstudos {
         const usuario = this.usuarios.find(u => u.email === email && u.senha === senha);
 
         if (usuario) {
-            // ✅ LOGIN BEM-SUCEDIDO
             localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
             alert(`Bem-vindo, ${usuario.nome}!`);
-            window.location.href = 'dashboard.html'; // ou 'index.html'
+            window.location.href = 'dashboard.html';
         } else {
-            // ❌ LOGIN FALHOU
             alert('Email ou senha incorretos!');
         }
     }
 
     // ============================================
-    // CADASTRO
+    // CADASTRO - COM LOADING E VOLTA
     // ============================================
     configurarCadastro() {
         const formCadastro = document.getElementById('cadastroForm');
@@ -78,12 +76,18 @@ class SistemaEstudos {
         if (senha.length < 6) return alert('Senha fraca');
         if (senha !== confirmaSenha) return alert('Senhas diferentes');
 
-        // Verifica se já existe
+        // Email existe?
         if (this.usuarios.some(u => u.email === email)) {
             return alert('Email já cadastrado!');
         }
 
-        // ✅ CRIA USUÁRIO
+        // LOADING NO BOTÃO
+        const btn = document.querySelector('#cadastroForm button');
+        const textoOriginal = btn.textContent;
+        btn.textContent = 'CADASTRANDO...';
+        btn.disabled = true;
+
+        // Cria usuário
         const novoUsuario = {
             id: Date.now(),
             nome,
@@ -95,13 +99,13 @@ class SistemaEstudos {
         this.usuarios.push(novoUsuario);
         localStorage.setItem('usuarios', JSON.stringify(this.usuarios));
 
-        alert('✅ Conta criada! Faça login.');
-        window.location.href = 'index.html'; // Volta pro login
+        // VOLTA PARA LOGIN após 2s
+        setTimeout(() => {
+            alert('✅ Conta criada!');
+            window.location.href = 'index.html';
+        }, 1500);
     }
 
-    // ============================================
-    // USUÁRIO LOGADO
-    // ============================================
     verificarUsuarioLogado() {
         if (this.usuarioLogado) {
             const usuario = JSON.parse(this.usuarioLogado);
@@ -113,52 +117,64 @@ class SistemaEstudos {
         }
     }
 
-    // ============================================
-    // NAVEGAÇÃO
-    // ============================================
     configurarNavegacao() {
-        // Botão voltar do cadastro
         const btnVoltar = document.querySelector('.back-btn');
         if (btnVoltar) {
             btnVoltar.addEventListener('click', () => {
                 window.location.href = 'index.html';
             });
         }
-
-        // Toggle senha
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('password-toggle')) {
-                const input = document.getElementById(e.target.dataset.input);
-                if (input) {
-                    input.type = input.type === 'password' ? 'text' : 'password';
-                }
-            }
-        });
     }
 
-    // Logout
     logout() {
         localStorage.removeItem('usuarioLogado');
         window.location.href = 'index.html';
     }
 }
 
-// ============================================
-// INICIALIZA AUTOMATICAMENTE
-// ============================================
+// INICIALIZA
 document.addEventListener('DOMContentLoaded', () => {
     window.sistema = new SistemaEstudos();
 });
 
-// Funções globais (para onclick direto)
-function irParaCadastro() {
-    window.location.href = 'cadastro.html';
+
+
+
+// login.js
+const fazerLogin = () => {
+  const usuario = document.getElementById('usuario')?.value || '';
+  const senha = document.getElementById('senha')?.value || '';
+  
+  const credenciaisValidas = [
+    {user: 'admin', pass: '1234'},
+    {user: 'aluno', pass: '1234'}
+  ];
+  
+  const valido = credenciaisValidas.find(c => c.user === usuario && c.pass === senha);
+  
+  if (valido) {
+    localStorage.setItem('logado', 'true');
+    window.location.href = 'dashboard.html';
+  } else {
+    alert('Usuário ou senha inválidos!');
+  }
+};
+
+// Auto redirect se já logado
+if (localStorage.getItem('logado') === 'true') {
+  window.location.href = 'telaprincipal.html';
 }
 
-function fazerLogin() {
-    window.sistema.fazerLogin();
-}
 
-function logout() {
-    window.sistema.logout();
+
+function login() {
+  const email = document.getElementById('email').value;
+  const senha = document.getElementById('senha').value;
+  
+  if (email === 'admin@escola.com' && senha === '123456') {
+    localStorage.setItem('logado', 'true');
+    window.location.href = 'dashboard.html'; // ← SEU ARQUIVO
+  } else {
+    alert('Email ou senha errados!');
+  }
 }
